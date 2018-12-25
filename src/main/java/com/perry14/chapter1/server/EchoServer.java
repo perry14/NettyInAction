@@ -1,4 +1,4 @@
-package com.perry14.server;
+package com.perry14.chapter1.server;
 
 import java.net.InetSocketAddress;
 

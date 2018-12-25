@@ -1,4 +1,4 @@
-package com.perry14.client;
+package com.perry14.chapter1.client;
 
 import java.net.InetSocketAddress;
 
@@ -22,11 +22,11 @@ public class EchoClient {
 	public void start() throws Exception {
 		EventLoopGroup group = new NioEventLoopGroup();
 		try {
-			Bootstrap b = new Bootstrap(); // 1.创建 Bootstrap
-			b.group(group) // 2.指定 EventLoopGroup 来处理客户端事件。由于我们使用 NIO 传输，所以用到了 NioEventLoopGroup 的实现
-					.channel(NioSocketChannel.class) // 3.使用的 channel 类型是一个用于 NIO 传输
-					.remoteAddress(new InetSocketAddress(host, port)) // 4.设置服务器的 InetSocketAddress
-					.handler(new ChannelInitializer<SocketChannel>() { // 5.当建立一个连接和一个新的通道时，创建添加到 EchoClientHandler 实例 到
+			Bootstrap b = new Bootstrap(); // 1
+			b.group(group) // 2
+					.channel(NioSocketChannel.class) // 3
+					.remoteAddress(new InetSocketAddress(host, port)) // 4
+					.handler(new ChannelInitializer<SocketChannel>() { // 5
 																		// channel pipeline
 						@Override
 						public void initChannel(SocketChannel ch) throws Exception {
@@ -34,11 +34,11 @@ public class EchoClient {
 						}
 					});
 
-			ChannelFuture f = b.connect().sync(); // 6.连接到远程;等待连接完成
+			ChannelFuture f = b.connect().sync(); // 6
 
-			f.channel().closeFuture().sync(); // 7.阻塞直到 Channel 关闭
+			f.channel().closeFuture().sync(); // 7
 		} finally {
-			group.shutdownGracefully().sync(); // 8.调用 shutdownGracefully() 来关闭线程池和释放所有资源
+			group.shutdownGracefully().sync(); // 8
 		}
 	}
 

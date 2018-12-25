@@ -1,4 +1,4 @@
-package com.perry14.server;
+package com.perry14.chapter1.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
